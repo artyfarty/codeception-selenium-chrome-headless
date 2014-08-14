@@ -36,34 +36,35 @@ package 'dbus-x11'
 # often push over this limit.
 #
 # The workaround here is to use execute.
-if node[:platform_family] == 'debian'
-  execute 'apt-get -q -y install firefox' do
-    timeout node['protractor-selenium-server']['browser-install-timeout']
-  end
-else
-  package 'firefox'
-end
+#if node[:platform_family] == 'debian'
+#  execute 'apt-get -q -y install firefox' do
+#    timeout node['protractor-selenium-server']['browser-install-timeout']
+#  end
+#else
+#  package 'firefox'
+#end
 
 # ----------------------------------------------------------------------------
 # Install Chromium and Chromedriver.
 # ----------------------------------------------------------------------------
 
 # The same workaround as for Firefox, and for the same reasons.
-if node[:platform_family] == 'debian'
-  execute 'apt-get -q -y install chromium-browser' do
-    timeout node['protractor-selenium-server']['browser-install-timeout']
-  end
-else
-  package 'chromium-browser'
-end
+#if node[:platform_family] == 'debian'
+#  execute 'apt-get -q -y install chromium-browser' do
+#    timeout node['protractor-selenium-server']['browser-install-timeout']
+#  end
+#else
+#  package 'chromium-browser'
+#end
 
 execute 'npm install -g chromedriver'
+#package 'chromedriver'
 
 # ----------------------------------------------------------------------------
 # Install PhantomJS and dependencies.
 # ----------------------------------------------------------------------------
 
-execute 'npm install -g phantomjs'
+#execute 'npm install -g phantomjs'
 
 # The Ghostdriver PhantomJS webdriver interface creates its log at
 # /phantomjsdriver.log by default.
@@ -72,8 +73,8 @@ execute 'npm install -g phantomjs'
 # or Selenium APIs, which is annoying.
 #
 # So create the file and give it lenient permissions so that things don't fail.
-execute 'touch /phantomjsdriver.log'
-execute 'chmod 666 /phantomjsdriver.log'
+#execute 'touch /phantomjsdriver.log'
+#execute 'chmod 666 /phantomjsdriver.log'
 
 # On a headless Ubuntu box there are some items needed by PhantomJS that
 # are not present. PhantomJS will silently fail if they aren't there - which is
@@ -116,4 +117,4 @@ end
 # Protractor installation.
 # ------------------------------------------------------------------
 
-execute 'npm install -g protractor jasmine-node'
+#execute 'npm install -g protractor jasmine-node'
