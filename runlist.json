@@ -1,0 +1,12 @@
+{ 
+	"run_list": [
+		"recipe[java]",
+		"recipe[dotdeb]",
+		"recipe[n-and-nodejs]",
+		"recipe[protractor-selenium-server]",
+		"recipe[protractor-selenium-server::services]"
+	],
+	"java": {
+		"jdk_version": "7"
+	}
+}

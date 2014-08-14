@@ -70,3 +70,12 @@ if node['platform'] == 'debian'
 		action :run
 	end
 end
+
+pkgs = %w{
+  php5
+  php5-apc
+  php5-curl
+}
+pkgs.each do |pkg|
+  package pkg
+end
